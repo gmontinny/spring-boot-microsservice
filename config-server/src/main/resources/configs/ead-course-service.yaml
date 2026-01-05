@@ -1,0 +1,3 @@
+ead:
+  auth:
+    jwtSecret: mySecretKey

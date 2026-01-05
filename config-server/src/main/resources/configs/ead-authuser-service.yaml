@@ -1,0 +1,4 @@
+ead:
+  auth:
+    jwtSecret: mySecretKey
+    jwtExpirationMs: 86400000

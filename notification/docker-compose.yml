@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres-notification:
+    image: postgres:15-alpine
+    container_name: postgres-notification
+    environment:
+      POSTGRES_DB: ead-notification
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root123
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_notification_data:/var/lib/postgresql/data
+    networks:
+      - notification-network
+
+  rabbitmq-notification:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq-notification
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    networks:
+      - notification-network
+
+volumes:
+  postgres_notification_data:
+
+networks:
+  notification-network:
+    driver: bridge

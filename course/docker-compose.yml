@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres-course:
+    image: postgres:15-alpine
+    container_name: postgres-course
+    environment:
+      POSTGRES_DB: ead-course
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_course_data:/var/lib/postgresql/data
+    networks:
+      - course-network
+
+  rabbitmq-course:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq-course
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    networks:
+      - course-network
+
+volumes:
+  postgres_course_data:
+
+networks:
+  course-network:
+    driver: bridge
