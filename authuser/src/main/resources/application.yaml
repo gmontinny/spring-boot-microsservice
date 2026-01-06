@@ -33,11 +33,15 @@ eureka:
 
 ead:
   auth:
-    jwtSecret: ${EAD_AUTH_JWTSECRET:mySecretKey}
+    jwtSecret: ${EAD_AUTH_JWTSECRET}
     jwtExpirationMs: ${EAD_AUTH_JWTEXPIRATIONMS:86400000}
+  api:
+    url:
+      course: http://localhost:8082
+  broker:
+    exchange:
+      userEvent: ead.userevent
 
-logging:
-  level:
-    com.ead.authuser: DEBUG
-    org.springframework.security: DEBUG
-    org.hibernate.SQL: DEBUG
+authuser:
+  refreshscope:
+    name: EAD AuthUser Service

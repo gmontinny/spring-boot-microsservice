@@ -33,8 +33,12 @@ eureka:
 
 ead:
   auth:
-    jwtSecret: ${EAD_AUTH_JWTSECRET:mySecretKey}
-
-logging:
-  level:
-    com.ead.notification: DEBUG
+    jwtSecret: ${EAD_AUTH_JWTSECRET}
+  broker:
+    exchange:
+      notificationCommandExchange: ead.notificationcommand
+    key:
+      notificationCommandKey: ead.notificationcommand.key
+    queue:
+      notificationCommandQueue:
+        name: ead.notificationcommand.notification.queue

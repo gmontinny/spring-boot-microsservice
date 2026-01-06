@@ -33,8 +33,13 @@ eureka:
 
 ead:
   auth:
-    jwtSecret: ${EAD_AUTH_JWTSECRET:mySecretKey}
-
-logging:
-  level:
-    com.ead.course: DEBUG
+    jwtSecret: ${EAD_AUTH_JWTSECRET}
+  broker:
+    exchange:
+      notificationCommandExchange: ead.notificationcommand
+      userEventExchange: ead.userevent
+    key:
+      notificationCommandKey: ead.notificationcommand.key
+    queue:
+      userEventQueue:
+        name: ead.userevent.course.queue

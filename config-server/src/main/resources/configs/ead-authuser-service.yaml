@@ -1,4 +1,4 @@
 ead:
   auth:
-    jwtSecret: mySecretKey
+    jwtSecret: 388N4mrQji1bwa0eOfgWgH/vUn0zA6PKW41xEugEz0eeEtJx024GnzlY9ASEXJ4I63gec2FHzzW62osO+rYcXg==
     jwtExpirationMs: 86400000
